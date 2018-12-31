@@ -1,0 +1,19 @@
+* Name:
+  Redis counter app with unicorn workers
+
+First create some directories:
+ $ mkdir -p tmp/pids
+
+and then,
+
+ $ bundle e unicorn -c ./unicorn.rb
+  ...
+
+* NOTE:
+  obviously you need Redis running somewhere else
+
+* When you like docker
+ $ docker run --name redis -d redis:3-alpine
+  ...
+ $ docker run -e REDIS_URL=redis://redis:6379/ --link=redis --rm -it app:latest
+  ...
